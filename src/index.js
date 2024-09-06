@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import NavBar from './navbar';
 import SideBar from './sidebar';
+import MainContent from './mainContent';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
-    <NavBar />
+    <NavBar />   
+
+    <div class ="row">
     <SideBar />
+    <MainContent />
+        
+    </div> 
 
     </>
 
