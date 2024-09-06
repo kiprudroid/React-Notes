@@ -2,22 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import NavBar from './navbar';
-import SideBar from './sidebar';
-import MainContent from './mainContent';
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from './Layout.js'
+import NoPage from './nopage.js';
+import MainContent from './mainContent.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
-    <NavBar />   
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MainContent page = "Index" />} />
+          <Route path="notes" element={<MainContent page = "Notes" />} />
+          <Route path="recents" element={<MainContent page = "Recents" />} />
+          <Route path="compose" element={<MainContent page = "Compose" />} />
+          <Route path="favourites" element={<MainContent page = "Favourites" />} />
 
-    <div class ="row">
-    <SideBar />
-    <MainContent />
-        
-    </div> 
-
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </>
 
 );
