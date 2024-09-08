@@ -9,7 +9,7 @@ const Layout = () => {
     <NavBar />   
 
     <div class ="row">
-    <div className="col-sm-2" style={{
+    <div className="d-none d-sm-block col-lg-10 col-md-10" style={{
             height : "100vh",
             width : "auto",
             borderRight : "1px solid rgb(41,41,41)"
