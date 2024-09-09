@@ -1,11 +1,14 @@
 import React from "react";
+import ListItem from "./listItem.js"
 
 export default  function Home() {
 
     return(
         <div className="col-lg-10 col-md-10 col-sm-12">
        <div className = "row">
-        <div className="col-lg-8 col-md-8 col-sm-12 m-auto card mt-3 bg-dark border">
+        <div className="col-lg-8 col-md-8 col-sm-12 m-auto card mt-3  border" style={{
+            background : "rgb(3,3,3)"
+        }}> 
             <div className="card-header m-auto">
                 <h1 className="text-center h2 text-white">
                     Recent Notes
@@ -28,6 +31,10 @@ export default  function Home() {
                             </th>
 
                         </thead>
+                        <tbody className="border-bottom " style={{background : "rgb(3,3,3)"}}>
+                            <ListItem dateCreated = "12/12/2022" title = "Shopping List" dateModified = "12/12/2022"/>
+                            <ListItem dateCreated = "11/12/2022" title = "Workout Routine" dateModified = "12/12/2022"/>
+                        </tbody>
                    </table>
                     </div>
                 </p>
