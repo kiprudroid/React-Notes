@@ -7,6 +7,7 @@ import Layout from './Layout.js'
 import NoPage from './nopage.js';
 import MainContent from './mainContent.js';
 import Home from './home.js';
+import Contact from './contact.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +18,7 @@ root.render(
           <Route index element={<Home />} />
           <Route path="notes" element={<MainContent page = "Notes" />} />
           <Route path="recents" element={<MainContent page = "Recents" />} />
-          <Route path="compose" element={<MainContent page = "Compose" />} />
+          <Route path="compose" element={<Contact />} />
           <Route path="favourites" element={<MainContent page = "Favourites" />} />
 
           <Route path="*" element={<NoPage />} />
