@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.custom-input {
+  color : white ;
+  background : rgb(3,3,3)
+}
+
+.custom-input :focus {
+  color : red ;
+  background : rgb(3,3,3)
+}
+
+#body :focus {
+background-color: red;
+}
