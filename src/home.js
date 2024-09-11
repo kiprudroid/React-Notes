@@ -1,16 +1,17 @@
-import React from "react";
+import React,{useState , useEffect} from 'react';
 import ListItem from "./listItem.js"
+
 
 export default  function Home() {
 
 
-    const [data, setData] = React.useState("");
+    const [data, setData] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetch("http://localhost:5000/api")
       .then((res) => {
         res.json().then((data) => setData(data));
-        console.log(data[0])
+        
       })
       
   }, []);
@@ -31,7 +32,7 @@ export default  function Home() {
                     <div className="row">
 
                    <table className="table">
-                        <thead className="border-bottom">
+                        <tr className="border-bottom">
                             <th className="border-right border-white">
                                 Date
                             </th>
@@ -39,13 +40,17 @@ export default  function Home() {
                                 Title
                             </th>
                             <th>
-                                Modified
+                               body
                             </th>
 
-                        </thead>
+                        </tr>
                         <tbody className="border-bottom " style={{background : "rgb(3,3,3)"}}>
-                            <ListItem dateCreated = "12/12/2022" title = "Shopping List" dateModified = "12/12/2022"/>
-                            <ListItem dateCreated = "11/12/2022" title = "Workout Routine" dateModified = "12/12/2022"/>
+
+                            {data.map((datum)=> <ListItem key={datum._id} dateCreated = {"null"} title = {datum.title} dateModified = {datum.body}/>) }
+
+
+                            {/* <ListItem dateCreated = "12/12/2022" title = "Shopping List" dateModified = "12/12/2022"/>
+                            <ListItem dateCreated = "11/12/2022" title = "Workout Routine" dateModified = "12/12/2022"/> */}
                         </tbody>
                    </table>
                     </div>

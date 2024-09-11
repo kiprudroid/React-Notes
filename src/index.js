@@ -7,7 +7,7 @@ import Layout from './Layout.js'
 import NoPage from './nopage.js';
 import MainContent from './mainContent.js';
 import Home from './home.js';
-import Contact from './contact.js';
+import Contact from './compose.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
