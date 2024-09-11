@@ -3,6 +3,15 @@ import ListItem from "./listItem.js"
 
 export default  function Home() {
 
+
+    fetch("http://localhost:5000/api").then((data)=>{
+        //response chaining
+
+       data.json()
+    }).then((json)=>{
+        console.log(json)
+    })
+
     return(
         <div className="col-lg-10 col-md-10 col-sm-12">
        <div className = "row">

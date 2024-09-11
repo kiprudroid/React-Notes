@@ -3,7 +3,7 @@ const cors = require('cors')
 const express = require('express');
 const app = express()
 
-mongoose.connect("mongodb://127.0.0.1:27017/Notes");
+mongoose.connect("mongodb://127.0.0.1:27017/notesdb");
 
 
 app.use(cors())
@@ -15,7 +15,7 @@ const notesSchema = new mongoose.Schema( {
     data : String
 } )
 
-const userModel = mongoose.model("Notes",notesSchema)
+const userModel = mongoose.model("posts",notesSchema)
 
 app.get('/api',(req,res)=>{
 
