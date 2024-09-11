@@ -4,13 +4,16 @@ import ListItem from "./listItem.js"
 export default  function Home() {
 
 
-    fetch("http://localhost:5000/api").then((data)=>{
-        //response chaining
+    const [data, setData] = React.useState("");
 
-       data.json()
-    }).then((json)=>{
-        console.log(json)
-    })
+  React.useEffect(() => {
+    fetch("http://localhost:5000/api")
+      .then((res) => {
+        res.json().then((data) => setData(data));
+        console.log(data[0])
+      })
+      
+  }, []);
 
     return(
         <div className="col-lg-10 col-md-10 col-sm-12">
@@ -24,7 +27,7 @@ export default  function Home() {
                 </h1>
             </div>
             <div className="card-body border-top">
-                <p class="text-center p text-light">
+                <p className="text-center p text-light">
                     <div className="row">
 
                    <table className="table">

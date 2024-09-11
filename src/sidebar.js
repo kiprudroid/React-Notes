@@ -15,7 +15,7 @@ export default function SideBarElement(props){
         }}>
             <i className={`bi  fs-1 text-light m-3 ${props.icon}`}></i>
 
-            <h3  class = "h3 text-light align-text-bottom" style ={{
+            <h3  className = "h3 text-light align-text-bottom" style ={{
                 verticalAlign : "baseline",
                 marginTop : "20px"
             }}>
