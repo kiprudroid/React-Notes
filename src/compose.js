@@ -4,12 +4,32 @@ import {useState} from 'react'
 
 export default function  Compose() {
 
-    const [title , setTitle] = useState("");
-    const [body , setBody] = useState("");
+    const [title , setTitle] = useState(null);
+    const [body , setBody] = useState(null);
+
+   
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        alert(`Your title is ${title}`)
+        
+        fetch('http://localhost:5000/data',{
+            method : "POST",
+            headers : {
+                'Content-Type': 'application/json'
+            },
+            body : JSON.stringify({
+                title : title,
+                body : body
+            })
+
+        }).then(res => res.json())
+            .then( data =>{
+                console.log("Promise accepted")
+            }).catch(err => {
+                console.log(err);
+                
+            })
+
     }
 
 
@@ -19,23 +39,26 @@ export default function  Compose() {
             color: "white",
             background : "rgb(3,3,3)"
             }}
-            onSubmit={handleSubmit}>
+            onSubmit={handleSubmit}
+            action='/data'
+            method='POST'>
             <div className="mb-3 text-white">
                 <label htmlFor="title" className="form-label custom-input">Title</label>
                 <input  className="form-control border-white custom-input" id="title" aria-describedby="titleHelp" type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            />
+            name ='title'/>
             </div>
             <div className="mb-3 text-white">
-                <label htmlFor="body" className="form-label " style={{color: "white"}}>Body</label>
+                <label htmlFor="body" className="form-label " style={{color: "white"}} >Body</label>
                 <textarea className="form-control border-white custom-input" 
                           id="body" 
                           rows="10"
                           value={body}
-                          onChange={(e) => setBody(e.target.value)}></textarea>
+                          onChange={(e) => setBody(e.target.value)}
+                          name='body'></textarea>
             </div>
-            <button  type="clear" className="btn btn-primary">Submit</button>
+            <button  type="submit" className="btn btn-primary">Submit</button>
         </form>
         </div>
     )
