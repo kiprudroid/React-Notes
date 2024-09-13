@@ -23,14 +23,14 @@ const userModel = mongoose.model("posts",notesSchema)
 app.post('/data',(req,res)=>{
 
    
-    const data = new userModel({
-        title : req.body.title,
-        body : req.body.body
-        // date : req.body.date
-        // data : req.body.data
-    })
+    // const data = new userModel({
+    //     title : req.body.title,
+    //     body : req.body.body
+    //     // date : req.body.date
+    //     // data : req.body.data
+    // })
 
-    console.log(req.body.title)
+    console.log(req.html)
     
     data.save().then(data => {
         console.log(data)
