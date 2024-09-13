@@ -4,7 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
+#Ignore node_modules in the Backend folder
+Backend/node_modules
 
+#Ignore env.js in the src folder
+src/env.js
 # testing
 /coverage
 

@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import './App.css';
 import {useState} from 'react'
+import api_key from './env'
 
 
 export default function TinyMCE() {
@@ -31,7 +32,7 @@ export default function TinyMCE() {
     <>
       <Editor
         className = 'bg-info m-3'
-        apiKey='h8nnsyu4x7m1zhi77y9egew5fy2pdkbyg7ysxif1vhno7m2b'
+        apiKey= {api_key}
         onInit={(_evt, editor) => editorRef.current = editor}
         initialValue="<p><b>Write Your Note</b>.</p>"
         init={{
