@@ -3,31 +3,37 @@ import { Editor } from '@tinymce/tinymce-react';
 import './App.css';
 import {useState} from 'react'
 import api_key from './env'
+import axios from 'axios'
 
 
 export default function TinyMCE() {
 
-  const [html , setHTML] = useState(null);
+  const [html , setHTML] = useState({
+    html : ''
+  });
 
 
   const editorRef = useRef(null);
   const log = () => {
     if (editorRef.current) {
-      setHTML(editorRef.current.getContent());
+      // setHTML({...html, html : editorRef.current.getContent()});
     }
+alert(html.html)
+    axios.post('http://localhost:5000/data', {
+      data: html.html
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-    alert(html)
-        fetch('/data',{
-            method : 'POST',
-            headers : {
-                'Content-Type' : 'application/json'
-            },
-            body : JSON.stringify({html : html})
-        }).then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
+   
 
   };
+
+ 
   return (
     <>
       <Editor
@@ -47,7 +53,13 @@ export default function TinyMCE() {
             'bold italic forecolor backcolor underline| alignleft aligncenter ' +
             'alignright alignjustify | bullist numlist outdent indent | ' +
             'removeformat | help',
-          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+          setup: (editor) => {
+            editor.on('Change', () => {
+              setHTML({...html, html : editorRef.current.getContent()});
+            });
+          },
+         
           
         }}
       />

@@ -2,19 +2,19 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const express = require('express');
 const app = express()
+const bodyParser = require('body-parser')
 
 mongoose.connect("mongodb://127.0.0.1:27017/notesdb");
 
 
 app.use(cors())
 app.use(express.urlencoded())
+app.use(bodyParser.json());
+
 
 
 const notesSchema = new mongoose.Schema( {
-     title : String,
-     body : String,
-    // date : String ,
-    // data : String
+     htmlContent : String
 } )
 
 const userModel = mongoose.model("posts",notesSchema)
@@ -22,24 +22,26 @@ const userModel = mongoose.model("posts",notesSchema)
 
 app.post('/data',(req,res)=>{
 
+    const data = req.body;
    
-    // const data = new userModel({
-    //     title : req.body.title,
-    //     body : req.body.body
-    //     // date : req.body.date
-    //     // data : req.body.data
-    // })
+    const dat = new userModel({
+        htmlContent : data.data
+    })
 
-    console.log(req.html)
     
-    data.save().then(data => {
+    
+    dat.save().then(data => {
         console.log(data)
         res.json(data)
         console.log(data);
     }).catch(err => {
         console.log(err)
     })
+    
 
+
+  
+    console.log(data.data)
     
     
 })
@@ -47,7 +49,7 @@ app.post('/data',(req,res)=>{
 app.get('/api',(req,res)=>{
 
     userModel.find().then(data => {
-        res.json(data)
+        res.send(data[1].htmlContent)
     }).catch(err => {
         console.log(err)
     })
