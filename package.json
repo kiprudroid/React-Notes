@@ -9,6 +9,7 @@
     "@tinymce/tinymce-react": "^5.1.1",
     "axios": "^1.7.7",
     "dotenv": "^16.4.5",
+    "html-react-parser": "^5.1.16",
     "path": "^0.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

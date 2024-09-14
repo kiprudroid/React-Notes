@@ -18,7 +18,7 @@ export default function TinyMCE() {
     if (editorRef.current) {
       // setHTML({...html, html : editorRef.current.getContent()});
     }
-alert(html.html)
+  
     axios.post('http://localhost:5000/data', {
       data: html.html
     })
@@ -63,7 +63,7 @@ alert(html.html)
           
         }}
       />
-      <button onClick={log}>Alert</button>
+      <button className='btn btn-outline-primary m-3' onClick={log}>Save</button>
     </>
   );
 }

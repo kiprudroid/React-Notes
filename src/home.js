@@ -46,7 +46,7 @@ export default  function Home() {
                         </tr>
                         <tbody className="border-bottom " style={{background : "rgb(3,3,3)"}}>
 
-                            {data.map((datum)=> <ListItem key={datum._id} dateCreated = {"null"} title = {datum.title} dateModified = {datum.body}/>) }
+                            {data.map((datum)=> <ListItem key={datum._id} dateCreated = {"null"} title = {"null"} dangerouslySetInnerHTML = {{__html : '<>Hello Now</>'}}/>) }
 
 
                             {/* <ListItem dateCreated = "12/12/2022" title = "Shopping List" dateModified = "12/12/2022"/>

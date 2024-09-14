@@ -49,7 +49,7 @@ app.post('/data',(req,res)=>{
 app.get('/api',(req,res)=>{
 
     userModel.find().then(data => {
-        res.send(data[1].htmlContent)
+        res.json(data)
     }).catch(err => {
         console.log(err)
     })
