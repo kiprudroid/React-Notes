@@ -1,6 +1,7 @@
 import React,{useState , useEffect} from 'react';
 import ListItem from "./listItem.js"
-
+import extractHeading from './heading.js';
+import stripTags from './strip.js';
 
 export default  function Home() {
 
@@ -15,6 +16,8 @@ export default  function Home() {
       })
       
   }, []);
+
+  console.log(extractHeading("<h1><strong>This is a heading 1</strong></h1><p>Some paragraph content</p>"));
 
     return(
         <div className="col-lg-10 col-md-10 col-sm-12">
@@ -39,18 +42,14 @@ export default  function Home() {
                             <th className="border-right">
                                 Title
                             </th>
-                            <th>
-                               body
-                            </th>
-
+                            
                         </tr>
                         <tbody className="border-bottom " style={{background : "rgb(3,3,3)"}}>
 
-                            {data.map((datum)=> <ListItem key={datum._id} dateCreated = {"null"} title = {"null"} dangerouslySetInnerHTML = {{__html : '<>Hello Now</>'}}/>) }
+                            {data.map((datum)=> <ListItem key={datum._id} dateCreated = {"null"}  title = {stripTags(extractHeading(datum.htmlContent))}/>) }
 
 
-                            {/* <ListItem dateCreated = "12/12/2022" title = "Shopping List" dateModified = "12/12/2022"/>
-                            <ListItem dateCreated = "11/12/2022" title = "Workout Routine" dateModified = "12/12/2022"/> */}
+                           
                         </tbody>
                    </table>
                     </div>
