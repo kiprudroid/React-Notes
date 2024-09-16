@@ -14,7 +14,8 @@ app.use(bodyParser.json());
 
 
 const notesSchema = new mongoose.Schema( {
-     htmlContent : String
+     htmlContent : String,
+     date : String,
 } )
 
 const userModel = mongoose.model("posts",notesSchema)
@@ -25,8 +26,11 @@ app.post('/data',(req,res)=>{
     const data = req.body;
    
     const dat = new userModel({
-        htmlContent : data.data
+        htmlContent : data.data,
+        date : new Date().toISOString()
     })
+
+    
 
     
     

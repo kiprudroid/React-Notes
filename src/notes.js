@@ -7,13 +7,11 @@ function NotesElement(props) {
 
     return (
 
-        <div className="row border border-white p-3 m-auto col-lg-8 col-md-8 col-sm-12 m-auto mt-3  border" style={{
+        <div className="row border border-white p-3 m-auto col-lg-8 col-md-8 col-sm-12 m-auto mt-3  border rounded" style={{
             background : "white"
         }}>
             <div className="col-lg-8 col-md-8 col-sm-10">
-                <h4 className="text-end text-white">Heading</h4> 
-
-                            {parse(props.content)}
+                         {parse(props.content)}
             </div>
         </div>
 
@@ -41,7 +39,7 @@ useEffect(()=>{
         }}>
             <h1 className="text-center text-white mt-2"
             >Notes</h1>
-        <div className="row border border-white p-3 m-auto col-lg-8 col-md-8 col-sm-12 m-auto mt-3  border">
+        <div className="row border border-white p-3 m-auto col-lg-8 col-md-8 col-sm-12 m-auto mt-3  border mb-5 pb-5">
         {data.map((datum)=> 
         <NotesElement  content = {datum.htmlContent} key = {datum._id}/>
             

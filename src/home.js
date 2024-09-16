@@ -1,7 +1,34 @@
 import React,{useState , useEffect} from 'react';
 import ListItem from "./listItem.js"
-import extractHeading from './heading.js';
-import stripTags from './strip.js';
+// import moment from 'moment';
+
+
+
+function getFirstElementContent(htmlString) {
+    // Create a new DOM parser
+    const parser = new DOMParser();
+    
+    // Parse the HTML string into a DOM document
+    const doc = parser.parseFromString(htmlString, 'text/html');
+    
+    // Get the first child element of the body (this assumes your htmlString starts at the body level)
+    const firstElement = doc.body.firstElementChild;
+    
+    // If there's a first element, return its text content (without any tags or nested tags)
+    return firstElement ? firstElement.textContent : null;
+}
+
+// Example usage
+const htmlString = '<div><span>Hello <strong>World</strong></span></div>';
+const firstElementContent = getFirstElementContent(htmlString);
+console.log(firstElementContent);  // Outputs: "Hello World"
+
+
+// function returnDate(date){
+//     const dateObject = new Date(isoDateString);
+
+//     return moment(dateObject).format('DD MMM')
+// }
 
 export default  function Home() {
 
@@ -17,7 +44,6 @@ export default  function Home() {
       
   }, []);
 
-  console.log(extractHeading("<h1><strong>This is a heading 1</strong></h1><p>Some paragraph content</p>"));
 
     return(
         <div className="col-lg-10 col-md-10 col-sm-12">
@@ -46,7 +72,7 @@ export default  function Home() {
                         </tr>
                         <tbody className="border-bottom " style={{background : "rgb(3,3,3)"}}>
 
-                            {data.map((datum)=> <ListItem key={datum._id} dateCreated = {"null"}  title = {stripTags(extractHeading(datum.htmlContent))}/>) }
+                            {data.map((datum)=> <ListItem key={datum._id} dateCreated = {"returnDate(datum.date)"}  title = {getFirstElementContent(datum.htmlContent)}/>) }
 
 
                            
