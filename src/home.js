@@ -1,6 +1,6 @@
 import React,{useState , useEffect} from 'react';
 import ListItem from "./listItem.js"
-// import moment from 'moment';
+import moment from 'moment';
 
 
 
@@ -24,11 +24,16 @@ const firstElementContent = getFirstElementContent(htmlString);
 console.log(firstElementContent);  // Outputs: "Hello World"
 
 
-// function returnDate(date){
-//     const dateObject = new Date(isoDateString);
+function returnDate(date){
 
-//     return moment(dateObject).format('DD MMM')
-// }
+    const dateObject = new Date(date);
+
+    if(dateObject == "Invalid Date"){
+        return ""
+    }
+
+    return moment(dateObject).format('DD MMM')
+}
 
 export default  function Home() {
 
@@ -72,7 +77,7 @@ export default  function Home() {
                         </tr>
                         <tbody className="border-bottom " style={{background : "rgb(3,3,3)"}}>
 
-                            {data.map((datum)=> <ListItem key={datum._id} dateCreated = {"returnDate(datum.date)"}  title = {getFirstElementContent(datum.htmlContent)}/>) }
+                            {data.map((datum)=> <ListItem key={datum._id} dateCreated = {returnDate(datum.date)}  title = {getFirstElementContent(datum.htmlContent)}/>) }
 
 
                            
