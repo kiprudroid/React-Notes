@@ -21,7 +21,7 @@ function getFirstElementContent(htmlString) {
 // Example usage
 const htmlString = '<div><span>Hello <strong>World</strong></span></div>';
 const firstElementContent = getFirstElementContent(htmlString);
-console.log(firstElementContent);  // Outputs: "Hello World"
+//console.log(firstElementContent);  // Outputs: "Hello World"
 
 
 function returnDate(date){
@@ -29,7 +29,7 @@ function returnDate(date){
     const dateObject = new Date(date);
 
     if(dateObject == "Invalid Date"){
-        return ""
+        return "Ancient"
     }
 
     return moment(dateObject).format('DD MMM')

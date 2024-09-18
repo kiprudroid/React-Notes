@@ -6,7 +6,7 @@ import api_key from './env'
 import axios from 'axios'
 
 
-export default function TinyMCE() {
+export default function TinyMCE(props) {
 
   const [html , setHTML] = useState({
     html : ''
@@ -40,7 +40,7 @@ export default function TinyMCE() {
         className = 'bg-info m-3'
         apiKey= {api_key}
         onInit={(_evt, editor) => editorRef.current = editor}
-        initialValue="<p><b>Write Your Note</b>.</p>"
+        initialValue={`<p><b>${props.content}</b>.</p>`}
         init={{
           height: 500,
           menubar: false,
