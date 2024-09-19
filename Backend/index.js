@@ -60,7 +60,18 @@ app.get('/api',(req,res)=>{
     
     
 })
+app.get('/spec/:id',(req,res)=>{
 
+    userModel.find({
+        _id : req.params.id
+    }).then(data => {
+        res.json(data)
+    }).catch(err => {
+        console.log(err)
+    })
+    
+    
+})
 
 app.listen(5000,()=>{
     console.log("Server listening in port 5000");
