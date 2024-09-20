@@ -35,10 +35,13 @@ function returnDate(date){
     return moment(dateObject).format('DD MMM')
 }
 
+
 export default  function Home() {
 
 
     const [data, setData] = useState([]);
+    const [specific, setSpecific] = useState({});
+
 
   useEffect(() => {
     fetch("http://localhost:5000/api")
@@ -48,6 +51,31 @@ export default  function Home() {
       })
       
   }, []);
+
+  
+        const  action = (key) => {
+        
+        fetch(`http://localhost:5000/spec/${key}`)
+          .then((res) => {
+            if (res.status === 200) {
+              res.json().then((specificData) => {
+                setSpecific(specificData);
+                
+                console.log(specificData);
+              });
+              
+              
+            } else {
+              console.error(`Error fetching note with id ${key}`);
+            }
+          })
+          .catch((err) => {
+            console.error("Error fetching note", err);
+          });
+        }
+   
+    
+
 
 
     return(
@@ -77,7 +105,7 @@ export default  function Home() {
                         </tr>
                         <tbody className="border-bottom " style={{background : "rgb(3,3,3)"}}>
 
-                            {data.map((datum)=> <ListItem key={datum._id} dateCreated = {returnDate(datum.date)}  title = {getFirstElementContent(datum.htmlContent)}/>) }
+                            {data.map((datum)=> <ListItem key={datum._id} dateCreated = {returnDate(datum.date)}  title = {getFirstElementContent(datum.htmlContent)} onClick ={() =>action(datum._id)}></ListItem>) }
 
 
                            

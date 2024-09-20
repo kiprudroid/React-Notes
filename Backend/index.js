@@ -62,7 +62,7 @@ app.get('/api',(req,res)=>{
 })
 app.get('/spec/:id',(req,res)=>{
 
-    userModel.find({
+    userModel.findOne({
         _id : req.params.id
     }).then(data => {
         res.json(data)
