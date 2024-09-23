@@ -9,6 +9,7 @@ import MainContent from './mainContent.js';
 import Home from './home.js';
 import Compose from './compose.js';
 import Notes from './notes.js';
+import Preview from './preview.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +23,8 @@ root.render(
           <Route path="compose" element={<Compose  content="Write your contet"/>} />
           <Route path="favourites" element={<MainContent page = "Favourites" />} />
           <Route path='compose/:noteId'  element={<Compose  content="Write your contet"/>}/>
+          <Route path='preview/:noteId'  element={<Preview  content="Write your contet"/>}/>
+
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

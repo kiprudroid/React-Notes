@@ -1,7 +1,7 @@
-import react from React ;
+import React from "react";
 import parse from 'html-react-parser';
 
-function Preview(props) {
+export default function Preview(props) {
 
 
     return (
