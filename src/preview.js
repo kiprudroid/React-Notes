@@ -17,6 +17,7 @@ export default function Preview(props) {
                     }}>
                         <div className="col-lg-8 col-md-8 col-sm-10">
                         {parse(props.content)}
+                        
                         </div>
                         </div>
                     </div>
