@@ -2,8 +2,11 @@ import { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import './App.css';
 import {useState} from 'react'
-import api_key from './env'
 import axios from 'axios'
+
+
+
+const api_key = process.env.REACT_APP_TINYMCE_API_KEY;
 
 
 export default function TinyMCE(props) {
